@@ -1,0 +1,36 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Поддержка русского языка ---
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% --- Для формул ---
+\usepackage{amsmath}
+
+% --- Для ссылок в оглавлении ---
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+
+\title{Тестовый сборник задач}
+\author{Твое Имя}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Проверка связи}
+Привет! Если ты видишь этот текст, значит LaTeX работает.
+
+\subsection{Проверка формул}
+Вот формула второго закона Ньютона:
+\begin{equation}
+    F = ma
+\end{equation}
+
+\subsection{Проверка кириллицы в формулах}
+А вот скорость: $v = \frac{S}{t}$.
+
+\end{document}
