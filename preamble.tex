@@ -1,0 +1,67 @@
+% === preamble.tex ===
+% Все пакеты и настройки для сборника задач
+
+% --- Кодировка и язык ---
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% --- Математика ---
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+
+% --- Оформление задач (красивые рамки) ---
+\usepackage[most]{tcolorbox}
+
+% --- Ссылки и оглавление ---
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+    pdfauthor={IronSamuray},
+    pdftitle={Сборник задач по физике 10-11 класс}
+}
+\pdfinfo{
+    /Author (IronSamuray)
+    /Title (Сборник задач по физике 10-11 класс)
+    /Subject (Все права защищены)
+    /Creator (IronSamuray)
+}
+% --- Макет страницы ---
+\usepackage{geometry}
+\geometry{a4paper, top=2cm, bottom=2cm, left=2cm, right=2cm}
+
+% --- Свои команды для удобства ===
+
+% Рейтинг задачи (как на Codeforces: 500-3000)
+\newcommand{\rating}[1]{%
+    \textcolor{gray}{\small\textbf{[★ #1]}}%
+}
+
+% Окружение для задачи
+\newtcolorbox{problem}[2][]{%
+    colback=white,
+    colframe=black!75,
+    fonttitle=\bfseries,
+    title=Задача #2,
+    #1 % дополнительные параметры
+}
+
+% Окружение для решения (можно скрывать)
+\newif\ifsolutions
+\solutionstrue % Закомментировать, чтобы скрыть решения
+
+\newenvironment{solution}{%
+    \ifsolutions%
+    \begin{tcolorbox}[colback=yellow!5, colframe=orange!50, title=💡 Решение]%
+}{%
+    \ifsolutions%
+    \end{tcolorbox}%
+    \fi%
+}
+
+% Теги для задач (ЕГЭ, олимпиада, база и т.д.)
+\newcommand{\tags}[1]{%
+    {\footnotesize\textcolor{gray}{\textit{#1}}}%
+}

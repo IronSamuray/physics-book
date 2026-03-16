@@ -1,18 +1,14 @@
+% === main.tex ===
 \documentclass[12pt, a4paper]{article}
 
-% --- Поддержка русского языка ---
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
+% Подключаем все настройки
+\input{preamble.tex}
 
-% --- Для формул ---
-\usepackage{amsmath}
+% Переключатели версий (можно менять здесь)
+\input{config/settings.tex}
 
-% --- Для ссылок в оглавлении ---
-\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
-
-\title{Тестовый сборник задач}
-\author{Твое Имя}
+\title{Сборник задач по физике \\ 10–11 классы}
+\author{IronSamuray}
 \date{\today}
 
 \begin{document}
@@ -21,16 +17,17 @@
 \tableofcontents
 \newpage
 
-\section{Проверка связи}
-Привет! Если ты видишь этот текст, значит LaTeX работает.
+% === МЕХАНИКА ===
+\part{Механика}
+\input{chapters/01_mechanics/01_kinematics.tex}
+\input{chapters/01_mechanics/02_dynamics.tex}
 
-\subsection{Проверка формул}
-Вот формула второго закона Ньютона:
-\begin{equation}
-    F = ma
-\end{equation}
+% === МКТ и Термодинамика ===
+\part{Молекулярная физика и термодинамика}
+% \input{chapters/02_molecular/01_ideal_gas.tex} % Раскомментируй, когда добавишь
 
-\subsection{Проверка кириллицы в формулах}
-А вот скорость: $v = \frac{S}{t}$.
+% === ЭЛЕКТРОДИНАМИКА ===
+\part{Электродинамика}
+% \input{chapters/03_electrodynamics/01_electrostatics.tex}
 
 \end{document}
