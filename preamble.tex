@@ -1,5 +1,5 @@
 % === preamble.tex ===
-% Все пакеты и настройки для сборника задач
+% Минималистичные настройки оформления сборника задач
 
 % --- Кодировка и язык ---
 \usepackage[T2A]{fontenc}
@@ -7,11 +7,10 @@
 \usepackage[russian]{babel}
 
 % --- Математика ---
-\usepackage{amsmath, amssymb, amsthm}
-\usepackage{mathtools}
+\usepackage{amsmath, amssymb}
 
-% --- Оформление задач (красивые рамки) ---
-\usepackage[most]{tcolorbox}
+% --- Картинки ---
+\usepackage{graphicx}
 
 % --- Ссылки и оглавление ---
 \usepackage{hyperref}
@@ -22,46 +21,63 @@
     pdfauthor={IronSamuray},
     pdftitle={Сборник задач по физике 10-11 класс}
 }
-\pdfinfo{
-    /Author (IronSamuray)
-    /Title (Сборник задач по физике 10-11 класс)
-    /Subject (Все права защищены)
-    /Creator (IronSamuray)
-}
+
 % --- Макет страницы ---
 \usepackage{geometry}
 \geometry{a4paper, top=2cm, bottom=2cm, left=2cm, right=2cm}
 
-% --- Свои команды для удобства ===
+% --- Цвета ---
+\usepackage{xcolor}
+\definecolor{ratingcolor}{gray}{0.5} % Серый цвет для рейтинга
 
-% Рейтинг задачи (как на Codeforces: 500-3000)
-\newcommand{\rating}[1]{%
-    \textcolor{gray}{\small\textbf{[★ #1]}}%
-}
+% === ШАБЛОНЫ ДЛЯ ЗАДАЧ ===
 
-% Окружение для задачи
-\newtcolorbox{problem}[2][]{%
-    colback=white,
-    colframe=black!75,
-    fonttitle=\bfseries,
-    title=Задача #2,
-    #1 % дополнительные параметры
-}
-
-% Окружение для решения (можно скрывать)
+% Переключатель решений
 \newif\ifsolutions
-\solutionstrue % Закомментировать, чтобы скрыть решения
+\solutionstrue  % Показывать решения (по умолчанию)
 
-\newenvironment{solution}{%
-    \ifsolutions%
-    \begin{tcolorbox}[colback=yellow!5, colframe=orange!50, title=💡 Решение]%
-}{%
-    \ifsolutions%
-    \end{tcolorbox}%
-    \fi%
+% Звёздочка для рейтинга (выбирай какой нравится):
+% \star - простая звезда
+% \bigstar - жирная звезда  
+% \ast - астериск *
+\newcommand{\ratingformat}[1]{$\bigstar$ #1}
+
+% Команда для оформления задачи
+% Использование: \problem{номер}{рейтинг}
+\newcommand{\problem}[2]{%
+    \par\medskip
+    \noindent\textbf{Задача №#1} \quad \textcolor{ratingcolor}{\ratingformat{#2}}
+    \par\nopagebreak
+    \smallskip
 }
 
-% Теги для задач (ЕГЭ, олимпиада, база и т.д.)
-\newcommand{\tags}[1]{%
-    {\footnotesize\textcolor{gray}{\textit{#1}}}%
+% Окружение для решения
+\newenvironment{solution}{%
+    \ifsolutions
+    \par\medskip
+    \noindent\textbf{Решение:}
+    \par\smallskip
+}{%
+    \par\medskip
+    \fi
+}
+
+% === КОМАНДЫ ДЛЯ КАРТИНОК ===
+
+% Картинка с подписью
+% Использование: \fig{0.5}{images/mechanics/plot.png}{Подпись}
+\newcommand{\fig}[3]{
+    \begin{center}
+        \includegraphics[width=#1\textwidth]{#2}
+        \par\medskip
+        \textbf{Рис.} #3
+    \end{center}
+}
+
+% Картинка без подписи
+% Использование: \image{0.5}{images/mechanics/plot.png}
+\newcommand{\image}[2]{
+    \begin{center}
+        \includegraphics[width=#1\textwidth]{#2}
+    \end{center}
 }
