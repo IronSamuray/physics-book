@@ -1,11 +1,8 @@
 % === main.tex ===
-\documentclass[12pt, a4paper]{article}
+\documentclass[12pt, a4paper]{report}
 
-% Подключаем все настройки
+% Подключаем настройки
 \input{preamble.tex}
-
-% Переключатели версий (можно менять здесь)
-\input{config/settings.tex}
 
 \title{Сборник задач по физике \\ 10–11 классы}
 \author{IronSamuray}
@@ -13,21 +10,19 @@
 
 \begin{document}
 
+% === ТИТУЛЬНАЯ СТРАНИЦА ===
 \maketitle
 \tableofcontents
 \newpage
 
-% === МЕХАНИКА ===
-\part{Механика}
-\input{chapters/01_mechanics/01_kinematics.tex}
-\input{chapters/01_mechanics/02_dynamics.tex}
+% === ЧАСТЬ 1: ЗАДАЧИ ===
+\part{Задачи}
+\input{generated/tasks_content.tex}
 
-% === МКТ и Термодинамика ===
-\part{Молекулярная физика и термодинамика}
-% \input{chapters/02_molecular/01_ideal_gas.tex} % Раскомментируй, когда добавишь
-
-% === ЭЛЕКТРОДИНАМИКА ===
-\part{Электродинамика}
-% \input{chapters/03_electrodynamics/01_electrostatics.tex}
+% === ЧАСТЬ 2: ОТВЕТЫ И РЕШЕНИЯ ===
+\clearpage
+\part{Ответы и решения}
+\addcontentsline{toc}{part}{Ответы и решения}
+\input{generated/answers_content.tex}
 
 \end{document}

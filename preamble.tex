@@ -1,5 +1,5 @@
 % === preamble.tex ===
-% Минималистичные настройки оформления сборника задач
+% Настройки оформления сборника задач
 
 % --- Кодировка и язык ---
 \usepackage[T2A]{fontenc}
@@ -18,7 +18,7 @@
     colorlinks=true,
     linkcolor=blue,
     urlcolor=cyan,
-    pdfauthor={IronSamuray},
+    pdfauthor={Артем Стерхов},
     pdftitle={Сборник задач по физике 10-11 класс}
 }
 
@@ -28,54 +28,43 @@
 
 % --- Цвета ---
 \usepackage{xcolor}
-\definecolor{ratingcolor}{gray}{0.5} % Серый цвет для рейтинга
+\definecolor{ratingcolor}{gray}{0.5}
 
 % === ШАБЛОНЫ ДЛЯ ЗАДАЧ ===
 
-% Переключатель решений
-\newif\ifsolutions
-\solutionstrue  % Показывать решения (по умолчанию)
-
-% Звёздочка для рейтинга (выбирай какой нравится):
-% \star - простая звезда
-% \bigstar - жирная звезда  
-% \ast - астериск *
+% Звёздочка для рейтинга
 \newcommand{\ratingformat}[1]{$\bigstar$ #1}
 
-% Команда для оформления задачи
-% Использование: \problem{номер}{рейтинг}
+% Команда для задачи: \problem{номер}{рейтинг}
 \newcommand{\problem}[2]{%
     \par\medskip
-    \noindent\textbf{Задача №#1} \quad \textcolor{ratingcolor}{\ratingformat{#2}}
-    \par\nopagebreak
-    \smallskip
+    \noindent\textbf{#1} \quad \textcolor{ratingcolor}{\ratingformat{#2}}
+    \par\medskip
 }
 
-% Окружение для решения
-\newenvironment{solution}{%
-    \ifsolutions
+% Команда для ответа
+\newcommand{\answer}[2]{%
     \par\medskip
-    \noindent\textbf{Решение:}
+    \noindent\textbf{#1. Ответ:} #2
     \par\smallskip
-}{%
-    \par\medskip
-    \fi
 }
 
-% === КОМАНДЫ ДЛЯ КАРТИНОК ===
+% Команда для решения (опционально)
+\newcommand{\solution}[1]{%
+    \par\smallskip
+    \noindent\textit{Решение:} #1
+    \par\medskip
+}
 
-% Картинка с подписью
-% Использование: \fig{0.5}{images/mechanics/plot.png}{Подпись}
+% Команды для картинок
 \newcommand{\fig}[3]{
     \begin{center}
         \includegraphics[width=#1\textwidth]{#2}
         \par\medskip
-        \textbf{Рис.} #3
+        \textbf{Рисунок.} #3
     \end{center}
 }
 
-% Картинка без подписи
-% Использование: \image{0.5}{images/mechanics/plot.png}
 \newcommand{\image}[2]{
     \begin{center}
         \includegraphics[width=#1\textwidth]{#2}

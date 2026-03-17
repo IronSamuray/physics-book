@@ -1,3 +1,4 @@
+# === ВРЕМЕННЫЕ ФАЙЛЫ LATEX ===
 *.aux
 *.log
 *.out
@@ -9,5 +10,19 @@
 *.synctex.gz
 *.fdb_latexmk
 *.fls
-*.pdf
+*.nav
+*.snm
+*.vrb
+
+# === СТАРЫЕ ФАЙЛЫ ===
+main.tex
+tasks_conditions.tex
+answers.tex
+
+# === КРОМЕ PDF В builds/ ===
+!builds/*.pdf
+
+# === СИСТЕМНЫЕ ФАЙЛЫ ===
+.DS_Store
+Thumbs.db
 .vscode/
